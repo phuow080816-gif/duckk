@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5e9">
+  <meta name="description" content="Khám phá thế giới vịt, thịt, hành và rau.">
+  <title>Nature Detective — Vịt, Hành & Rau</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> 
+ <script src="script.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="#home" class="brand"><span class="brand-mark">✳</span>DUCK<span class="brand-light">DETECTIVE</span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Mở menu"><span></span><span></span></button>
+  <nav class="main-nav" id="mainNav">
+    <a href="#home" class="nav-link active">Trang chủ</a>
+<a href="#explore" class="nav-link">Khám phá</a>
+ <a href="#dishes" class="nav-link">Kho món ăn</a>
+    <a href="#compare" class="nav-link">So sánh</a>
+    <a href="#collection" class="nav-link">Bộ sưu tập <span id="savedCount">0</span></a>
+     <a href="#certificate" class="nav-link">Chứng chỉ</a>
+  </nav>
+  <a href="#dishes" class="top-cta">Khám phá món ăn ↗</a>
+</header>
+
+<main>
+  <section id="home" class="hero section-wrap">
+    <div class="hero-copy">
+<p class="eyebrow">NHẬT KÝ KHÁM PHÁ</p>
+      <h1>Hôm nay<br>ăn gì <em>nhỉ?</em></h1>
+      <p class="hero-subtitle">Vịt, hành hay rau?</p>
+      <p class="hero-description">Một góc nhỏ dành riêng cho người thích khám phá thế giới đồ ăn.</p>
+      <div class="hero-actions">
+        <a href="#dishes" class="button button-dark">KHÁM PHÁ KHO MÓN ĂN ↗</a>
+        <a href="#explore" class="button button-outline">KHÁM PHÁ NGUYÊN LIỆU ↓</a>
+      </div>
+      <p class="hero-footnote">✳ CẨM NANG NHỎ DÀNH CHO NGƯỜI YÊU ẨM THỰC</p>
+    </div>
+    <div class="hero-art">
+      <div class="hero-image-wrap">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Bàn ăn với rau củ">
+        <span class="image-stamp">TƯƠI NGON · THÚ VỊ</span>
+      </div>
+      <div class="floating-note note-top"><strong>Đây là gì nhỉ?</strong><small>Cùng khám phá nhé.</small></div>
+      <div class="floating-note note-bottom"><strong>Khám phá ẩm thực</strong><small>Small things, big curiosity.</small></div>
+    </div>
+  </section>
+
+  <section class="stats-strip">
+    <div><strong id="totalSpecies">0</strong><span>ĐIỀU THÚ VỊ ĐỂ KHÁM PHÁ</span></div>
+    <div><strong>04</strong><span>NHÓM CHỦ ĐỀ CHÍNH</span></div>
+    <div><strong>∞</strong><span>MÓN ĂN</span></div>
+  </section>
+
+  <section class="category-section section-wrap">
+    <div class="section-heading">
+      <div><p class="eyebrow">BẮT ĐẦU KHÁM PHÁ</p><h2>Chọn chủ đề <em> bạn yêu thích.</em></h2></div>
+      <p>Chọn một nhóm để bắt đầu khám phá.</p>
+    </div>
+    <div class="category-grid">
+      <button class="category-card" data-category="duck">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/White_duck_in_Utah_%2842425216301%29.jpg?utm_source=vi.wikipedia.org&utm_campaign=index&utm_content=original" alt="Vịt">
+        <div><span>THẾ GIỚI LOÀI VỊT · 01</span><h3>Thế giới vịt</h3><p>Vịt trời, vịt cỏ và những người họ hàng.</p><b>↗</b></div>
+      </button>
+      <button class="category-card" data-category="onion">
+        <img src="https://kimsdeli.com/wp-content/uploads/2024/01/z.jpg" alt="Hành">
+        <div><span>HỌ NHÀ HÀNH · 02</span><h3>Họ nhà hành</h3><p>Hành lá, hành tây và những người anh em.</p><b>↗</b></div>
+      </button>
+      <button class="category-card" data-category="veggie">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=85" alt="Rau">
+        <div><span>THẾ GIỚI RAU XANH · 03</span><h3>Vườn rau xanh</h3><p>Những loại rau thường gặp trong bữa ăn.</p><b>↗</b></div>
+      </button>
+    </div>
+  </section>
+
+  <section id="explore" class="explore-section section-wrap">
+    <div class="section-heading">
+      <div><p class="eyebrow">CẨM NANG KHÁM PHÁ</p><h2>Khám phá <em>các nguyên liệu.</em></h2></div>
+      <p>Khám phá và phân loại các nguyên liệu.</p>
+    </div>
+
+    <div class="archive-toolbar">
+      <div class="filter-pills" id="filterPills">
+        <button class="filter-pill active" data-filter="all">Tất cả</button>
+        <button class="filter-pill" data-filter="duck">Vịt</button>
+        <button class="filter-pill" data-filter="meat">Thịt</button>
+        <button class="filter-pill" data-filter="onion">Hành</button>
+        <button class="filter-pill" data-filter="veggie">Rau</button>
+      </div>
+      <label class="search-wrap">⌕ <input id="searchInput" type="search" placeholder="Tìm nguyên liệu..."></label>
+    </div>
+
+    <p class="archive-count">Tìm thấy <strong id="archiveCount">0</strong> nguyên liệu</p>
+    <div id="specimenGrid" class="specimen-grid"></div>
+    <p id="archiveEmpty" class="empty-message" hidden>Không tìm thấy nguyên liệu phù hợp.</p>
+    <div class="load-more-wrap"><button id="loadMore" class="button button-outline">XEM THÊM ↓</button></div>
+  </section>
+
+  <section id="dishes" class="dishes-section section-wrap">
+    <div class="section-heading">
+      <div><p class="eyebrow">KHO MÓN ĂN</p><h2>Ăn gì <em>hôm nay?</em></h2></div>
+      <p>Một vài gợi ý món ăn từ vịt, thịt, hành và rau.</p>
+    </div>
+    <div class="dish-filters" id="dishFilters">
+      <button class="dish-filter active" data-dish-filter="all">Tất cả món</button>
+      <button class="dish-filter" data-dish-filter="duck">Món từ vịt</button>
+      <button class="dish-filter" data-dish-filter="meat">Món từ thịt</button>
+      <button class="dish-filter" data-dish-filter="onion">Món từ hành</button>
+      <button class="dish-filter" data-dish-filter="veggie">Món rau</button>
+    </div>
+    <div class="dish-grid" id="dishGrid">
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://cdn.eva.vn/upload/4-2023/images/2023-11-30/tu-nau-mien-ngan-day-ap-thit-mang-kho-mem-ngon-thom-nuc-nong-hoi-ca-nha-xi-xup-me-man-401392132_3282822318675600_2129197981262073118_n-1701317414-171-width780height625.jpg"
+      alt="Bún ngan"
+      loading="lazy"
+    >
+  </div>
+  <h3>Bún ngan</h3>
+  <p>Bún ăn cùng thịt ngan, nước dùng đậm đà, rau thơm và măng tùy cách chế biến.</p>
+</article>
+
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://media-cdn-v2.laodong.vn/storage/newsportal/2024/11/21/1424787/Pho-1.jpg"
+      alt="Phở gà"
+      loading="lazy"
+    >
+  </div>
+  <h3>Phở gà</h3>
+  <p>Phở nóng với thịt gà, bánh phở mềm, nước dùng thơm và rau gia vị ăn kèm.</p>
+</article>
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/cach_nau_pho_bo_nam_dinh_0_1d94be153c.png"
+      alt="Phở bò"
+      loading="lazy"
+    >
+  </div>
+  <h3>Phở bò</h3>
+  <p>Phở nóng với bánh phở mềm, thịt bò thái lát, nước dùng thơm và rau gia vị ăn kèm.</p>
+</article>
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/11/6/1113493/Anh-3.2.jpg"
+      alt="Bún bò Huế"
+      loading="lazy"
+    >
+  </div>
+  <h3>Bún bò Huế</h3>
+  <p>Bún với nước dùng đậm đà, thịt bò, giò heo và rau sống ăn kèm.</p>
+</article>
+
+<article class="dish-card" data-dish-category="duck">
+  <div class="dish-photo">
+    <img
+      src="https://vnn.1cdn.vn/2026/07/30/b8116ba3-d999-4041-9dab-8a57d0e12606.png"
+      alt="Vịt om sấu"
+      loading="lazy"
+    >
+  </div>
+  <h3>Vịt om sấu</h3>
+  <p>Thịt vịt om cùng quả sấu chua dịu, nước dùng đậm đà, ăn kèm rau thơm.</p>
+</article>
+
+<article class="dish-card" data-dish-category="duck">
+  <div class="dish-photo">
+    <img
+      src="https://i-giadinh.vnecdn.net/2023/08/10/Buoc-5-Thanh-pham-1-5-4353-1691658400.jpg"
+      alt="Vịt luộc"
+      loading="lazy"
+    >
+  </div>
+  <h3>Vịt luộc</h3>
+  <p>Thịt vịt luộc mềm ngọt, da vàng óng, ăn kèm gừng và nước mắm gừng.</p>
+</article>
+
+<article class="dish-card" data-dish-category="duck">
+  <div class="dish-photo">
+    <img
+      src="https://file.hstatic.net/200000700229/article/lam-vit-quay-bang-noi-chien-khong-dau_75c656e24c7e467da076f1dc23bb5af9.jpg"
+      alt="Vịt quay"
+      loading="lazy"
+    >
+  </div>
+  <h3>Vịt quay</h3>
+  <p>Vịt quay có lớp da vàng nâu giòn thơm, thịt mềm ngọt, thường ăn cùng nước chấm và rau sống.</p>
+</article>
+
+
+<article class="dish-card" data-dish-category="veggie">
+  <div class="dish-photo">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsr0tu0CjMsloLWskpPN9SCWXudvIZXFjdz0t6O1sDscNMHfCUOiDmDo&s=10"
+      alt="Canh rau muống luộc"
+      loading="lazy"
+    >
+  </div>
+  <h3>Canh rau muống luộc</h3>
+  <p>Rau muống xanh tươi luộc vừa chín, nước luộc thanh mát, có thể vắt thêm chanh.</p>
+</article>
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://i.ytimg.com/vi/GjTAWVjJkGI/maxresdefault.jpg"
+      alt="Bún sườn"
+      loading="lazy"
+    >
+  </div>
+  <h3>Bún sườn</h3>
+  <p>Bún ăn cùng sườn heo mềm, nước dùng ngọt thanh, thêm hành lá và rau thơm.</p>
+</article>
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://bizweb.dktcdn.net/100/489/006/files/ga-ac-tiem-thuoc-bac-6.jpg?v=1697687091423"
+      alt="Gà hầm"
+      loading="lazy"
+    >
+  </div>
+  <h3>Gà hầm</h3>
+  <p>Thịt gà hầm mềm cùng các loại rau củ và gia vị, nước dùng thơm ngọt, thích hợp cho bữa cơm gia đình.</p>
+</article>
+
+
+
+<article class="dish-card" data-dish-category="veggie">
+  <div class="dish-photo">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW01lgJGiZl3J7ZPIK9J3UsEStGiBDqyJmyXAeEL1Nf0ZH4XsH5mIUxBjH&s=10"
+      loading="lazy"
+      onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540420773420-3366772f4999?w=640';"
+    >
+  </div>
+  <h3>Rau thơm ăn kèm</h3>
+  <p>Húng quế, rau mùi, kinh giới và các loại rau thơm ăn cùng bún, phở hoặc món cuốn.</p>
+</article>
+
+<article class="dish-card" data-dish-category="veggie">
+  <div class="dish-photo">
+    <img
+      src="https://giavichinsu.com/wp-content/uploads/2025/11/canh-suon-rau-cu-1.jpg"
+      alt="Canh rau củ"
+      loading="lazy"
+    >
+  </div>
+  <h3>Canh rau củ</h3>
+  <p>Canh nóng với cà rốt, khoai tây, bắp và các loại rau củ thanh ngọt.</p>
+</article>
+
+<article class="dish-card" data-dish-category="veggie">
+  <div class="dish-photo">
+    <img
+      src="https://storage.googleapis.com/onelife-public/blog.onelife.vn/2021/10/cach-lam-canh-dua-chua-suon-bo-mon-chinh-317848068649.jpg"
+      alt="Canh dưa chua"
+      loading="lazy"
+    >
+  </div>
+  <h3>Canh dưa chua</h3>
+  <p>Canh dưa cải muối chua nấu cùng cà chua, hành lá và sườn hoặc thịt tùy khẩu vị.</p>
+</article>
+
+
+<article class="dish-card" data-dish-category="meat">
+  <div class="dish-photo">
+    <img
+      src="https://img-global.cpcdn.com/recipes/f3d34f1de1778683/1200x630cq80/photo.jpg"
+      alt="Súp gà"
+      loading="lazy"
+    >
+  </div>
+  <h3>Súp gà</h3>
+  <p>Súp nóng sánh mịn với thịt gà xé, ngô ngọt, trứng và một chút tiêu.</p>
+</article>
+
+<article class="dish-card" data-dish-category="onion">
+  <div class="dish-photo">
+    <img
+      src="https://production-cdn.pharmacity.io/digital/original/plain/blog/8e62d9e658ee6c168b6b9ea6326bb8391747031780-scaled-1.jpg"
+      alt="Hành lá tươi"
+      loading="lazy"
+    >
+  </div>
+  <h3>Hành lá</h3>
+  <p>Loại rau gia vị có thân xanh, thường dùng để nêm canh, rắc lên bún phở và trang trí món ăn.</p>
+</article>
+
+</div>
+    <p class="dish-disclaimer">* Món ăn và hình minh họa có thể khác nhau tùy cách chế biến.</p>
+  </section>
+
+  <section id="compare" class="compare-section section-wrap">
+    <div class="section-heading"><div><p class="eyebrow">ĐẶT CẠNH NHAU</p><h2>So sánh các <em>đặc điểm.</em></h2></div><p>Đặt hai nguyên liệu cạnh nhau để xem điểm khác biệt.</p></div>
+    <div class="compare-panel">
+      <div><label for="compareA">Đối tượng A</label><select id="compareA"><option value="">Chọn đối tượng</option></select></div>
+      <strong class="compare-vs">VS</strong>
+      <div><label for="compareB">Đối tượng B</label><select id="compareB"><option value="">Chọn đối tượng</option></select></div>
+      <button id="compareButton" class="button button-dark">SO SÁNH NGAY ↗</button>
+      <div id="compareResult" class="compare-result"></div>
+    </div>
+  </section>
+
+  <section id="collection" class="collection-section section-wrap">
+    <div class="section-heading"><div><p class="eyebrow">NHẬT KÝ KHÁM PHÁ CỦA BẠN</p><h2>Bộ sưu tập <em>của bạn.</em></h2></div><p>Theo dõi những đối tượng bạn đã khám phá.</p></div>
+    <div class="collection-overview">
+      <div class="collection-total-card"><span>ĐÃ KHÁM PHÁ</span><strong id="collectionTotal">0</strong><span>nguyên liệu đã sưu tầm</span></div>
+      <div class="collection-progress-card">
+        <div class="progress-heading"><span>Tiến độ tổng thể</span><span id="overallProgress">0%</span></div>
+        <div class="progress-track"><div id="collectionProgress" class="progress-fill"></div></div>
+        <div class="category-progress-list">
+          <div><p>Vịt <span id="duckProgressText">0/0</span></p><div class="progress-track"><div id="duckProgressBar" class="progress-fill"></div></div></div>
+          <div><p>Thịt <span id="meatProgressText">0/0</span></p><div class="progress-track"><div id="meatProgressBar" class="progress-fill"></div></div></div>
+          <div><p>Hành <span id="onionProgressText">0/0</span></p><div class="progress-track"><div id="onionProgressBar" class="progress-fill"></div></div></div>
+          <div><p>Rau <span id="veggieProgressText">0/0</span></p><div class="progress-track"><div id="veggieProgressBar" class="progress-fill"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div id="badgeGrid" class="badge-grid"></div>
+    <div class="collection-tabs">
+      <button class="collection-tab active" data-collection-tab="discovered">Đã khám phá <span id="discoveredTabCount">0</span></button>
+      <button class="collection-tab" data-collection-tab="favorites">Yêu thích <span id="favoritesTabCount">0</span></button>
+    </div>
+    <div id="collectionGrid" class="collection-grid"></div>
+    <div id="collectionEmpty" class="collection-empty"><span>✳</span><h3>Bộ sưu tập đang chờ bạn.</h3><p>Hãy khám phá các nguyên liệu để bắt đầu bộ sưu tập.</p><a href="#explore" class="button button-outline">BẮT ĐẦU KHÁM PHÁ ↗</a></div>
+    <button id="resetCollection" class="button button-outline">ĐẶT LẠI BỘ SƯU TẬP</button>
+  </section>
+
+  <section class="certificate-section" id="certificate">
+  <div class="section-heading">
+    <span class="section-eyebrow">ĐẶC CÁCH VINH DANH</span>
+    <h2>Chứng chỉ của bạn.</h2>
+    <p>Khám phá thế giới vịt, hành và rau để trở thành Đại sứ Vịt Hành!</p>
+  </div>
+
+  <div class="certificate-card">
+    <div class="certificate-inner">
+      <div class="certificate-top">
+        <span>✳ DUCK DETECTIVE</span>
+        <span>CHỨNG NHẬN ĐẶC BIỆT</span>
+      </div>
+
+      <div class="certificate-emblem">🦆</div>
+
+      <p class="certificate-label">CHỨNG NHẬN TRAO TẶNG</p>
+      <h3>ĐẠI SỨ<br><span> TOÀN CẦU VỊT HÀNH</span></h3>
+
+      <p class="certificate-description">
+        Chứng nhận được trao cho nhà khám phá đã hoàn thành
+        hành trình tìm hiểu thế giới loài vịt, các loại hành
+        và những loại rau thú vị.
+      </p>
+
+      <label for="certificateName">CHỨNG CHỈ CẤP CHO</label>
+      <input
+        id="certificateName"
+        type="text"
+        maxlength="50"
+        placeholder="Nhập tên của bạn..."
+      >
+
+      <div class="certificate-bottom">
+        <div>
+          <span>NGÀY CẤP</span>
+          <strong id="certificateDate">--/--/----</strong>
+        </div>
+        <div class="certificate-stamp">ĐẠI SỨ<br>VỊT HÀNH</div>
+        <div>
+          <span>MÃ CHỨNG NHẬN</span>
+          <strong>ND-DVH-001</strong>
+        </div>
+      </div>
+
+      <p class="certificate-status" id="certificateStatus">
+        Hoàn thành bộ sưu tập để mở khóa chứng chỉ.
+      </p>
+    </div>
+  </div>
+
+  <div class="certificate-actions">
+    <button id="claimCertificate" type="button">
+      NHẬN CHỨNG CHỈ ↗
+    </button>
+<button id="downloadCertificate" type="button">
+      TẢI CHỨNG CHỈ ↓
+    </button>
+  </div>
+</section>
+
+  <section class="final-cta section-wrap">
+    <div><p class="eyebrow">DÀNH RIÊNG CHO EM</p><h2>Luôn có điều<br> mới mẻ <em>để thưởng thức.</em></h2><p>Khám phá nguyên liệu mới hoặc chọn xem hôm nay ăn gì.</p><a href="#dishes" class="button button-dark">TÌM MÓN NGON NGAY ↗</a></div>
+    <span class="final-decoration">✳</span>
+  </section>
+</main>
+
+<footer class="footer">
+  <a href="#home" class="brand">✳ DUCK<span class="brand-light">DETECTIVE</span></a>
+  <p>Một chút tò mò khiến mỗi bữa ăn thêm thú vị.</p>
+  <a href="#home">VỀ ĐẦU TRANG ↑</a>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<dialog id="detailDialog" class="detail-dialog"><button id="closeDialog" class="dialog-close">×</button><div id="detailContent"></div></dialog>
+</body>
+</html>
